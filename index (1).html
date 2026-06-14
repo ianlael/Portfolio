@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ian Lael — Publicidade & Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #7F77DD;
+      --purple-dark: #534AB7;
+      --purple-light: #EEEDFE;
+      --pink: #D4537E;
+      --pink-dark: #993556;
+      --pink-light: #FBEAF0;
+      --amber: #EF9F27;
+      --amber-dark: #854F0B;
+      --amber-light: #FAEEDA;
+      --teal: #1D9E75;
+      --teal-dark: #085041;
+      --teal-light: #E1F5EE;
+      --bg: #F7F6FB;
+      --surface: #FFFFFF;
+      --border: rgba(0,0,0,0.08);
+      --text: #1A1826;
+      --muted: #6B6880;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(247,246,251,0.85);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 16px;
+      color: var(--purple-dark);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 13px; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* LAYOUT */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* HERO */
+    .hero {
+      padding-top: 120px; padding-bottom: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #7F77DD 0%, #D4537E 55%, #EF9F27 100%);
+      opacity: 0.08;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--purple-light);
+      color: var(--purple-dark);
+      font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 99px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(127,119,221,0.2);
+    }
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); display: inline-block; }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 1rem; color: var(--text);
+    }
+    .hero h1 .accent {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-frase {
+      font-size: 17px; color: var(--muted);
+      max-width: 480px; line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px; padding: 6px 16px;
+      border-radius: 99px;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      padding: 12px 28px; border-radius: 99px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hero-cta svg { width: 16px; height: 16px; }
+
+    /* SECTIONS */
+    section { padding: 64px 0; }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600;
+      color: var(--purple);
+      letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 28px; font-weight: 700;
+      color: var(--text); margin-bottom: 2rem;
+    }
+
+    /* SOBRE */
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem; align-items: center;
+    }
+    .sobre-texto p {
+      font-size: 15px; color: var(--muted);
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+    }
+    .stat-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 32px; font-weight: 700;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* HABILIDADES */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+    }
+    .skill-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 10px;
+    }
+    .skill-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .skill-bar-bg {
+      height: 4px; background: var(--bg);
+      border-radius: 99px; overflow: hidden; margin-bottom: 4px;
+    }
+    .skill-bar-fill { height: 100%; border-radius: 99px; }
+    .skill-pct { font-size: 11px; color: var(--muted); text-align: right; }
+
+    /* PROJETOS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .project-thumb {
+      height: 100px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+    }
+    .project-body { padding: 1.25rem; }
+    .project-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 16px; font-weight: 600;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .project-desc {
+      font-size: 13px; color: var(--muted);
+      line-height: 1.6; margin-bottom: 12px;
+    }
+    .project-quote {
+      font-size: 13px; font-style: italic;
+      color: var(--purple-dark);
+      border-left: 3px solid var(--purple);
+      padding-left: 10px; margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 12px; border-radius: 99px;
+    }
+    .project-link {
+      font-size: 12px; font-weight: 500;
+      color: var(--purple);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--purple-dark); }
+
+    /* CONTATO */
+    .contact-section {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--pink-dark) 100%);
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .contact-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 28px; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .contact-section p {
+      font-size: 15px; opacity: 0.85; margin-bottom: 2rem;
+    }
+    .contact-links {
+      display: flex; gap: 12px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.15);
+      color: #fff; text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      padding: 12px 24px; border-radius: 99px;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: background 0.2s;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.25); }
+    .contact-link svg { width: 18px; height: 18px; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .sobre-grid { grid-template-columns: 1fr; }
+      nav .nav-links { display: none; }
+      .contact-section { padding: 2rem 1.5rem; }
+    }
+
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      .project-card:hover { transform: none; }
+      .hero-cta:hover { transform: none; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Ian Lael ✦</a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span></span>
+        Publicidade & Marketing Digital
+      </div>
+      <h1>
+        Olá, sou<br>
+        <span class="accent">Ian Lael</span>
+      </h1>
+      <p class="hero-frase">
+        "Cada ideia tem um destino. Meu trabalho é não parar até chegar lá."
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">✍️ Copywriting</span>
+        <span class="hero-tag">🔍 SEO</span>
+        <span class="hero-tag">💡 Criação de Campanhas</span>
+        <span class="hero-tag">📱 Publicidade</span>
+      </div>
+      <a href="#contato" class="hero-cta">
+        Fale comigo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Quem sou</p>
+        <h2 class="section-title">Sobre mim</h2>
+      </div>
+      <div class="sobre-grid reveal">
+        <div class="sobre-texto">
+          <p>
+            Sou estudante de Publicidade e Propaganda na FAM, apaixonado por criar campanhas que conectam marcas a pessoas de forma criativa e estratégica.
+          </p>
+          <p>
+            Meu foco está no copywriting e no marketing digital — acredito que as palavras certas, no lugar certo, têm o poder de transformar percepções e gerar resultados reais.
+          </p>
+          <p>
+            Perseverança é minha marca. Não descanso enquanto a ideia não estiver no seu melhor.
+          </p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Projetos criados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2</div>
+            <div class="stat-label">Especializações</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Foco e entrega</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Criatividade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">O que sei fazer</p>
+        <h2 class="section-title">Habilidades</h2>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <div class="skill-icon" style="background:var(--purple-light)">✍️</div>
+          <div class="skill-name">Copywriting</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:82%;background:var(--purple)"></div></div>
+          <div class="skill-pct">82%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:var(--pink-light)">🎯</div>
+          <div class="skill-name">Criação de Campanhas</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:78%;background:var(--pink)"></div></div>
+          <div class="skill-pct">78%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:var(--amber-light)">📱</div>
+          <div class="skill-name">Social Media</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%;background:var(--amber)"></div></div>
+          <div class="skill-pct">70%</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:var(--teal-light)">🔍</div>
+          <div class="skill-name">SEO</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:60%;background:var(--teal)"></div></div>
+          <div class="skill-pct">60%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Trabalhos</p>
+        <h2 class="section-title">Projetos em destaque</h2>
+      </div>
+      <div class="projects-grid reveal">
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:#26215C">🦇</div>
+          <div class="project-body">
+            <div class="project-title">Snickers × Batman</div>
+            <div class="project-desc">
+              Campanha criativa para o lançamento do Snickers Dark em colaboração com o Cavaleiro das Trevas. Um trocadilho certeiro que une o universo do herói ao produto.
+            </div>
+            <div class="project-quote">"The dark snack for the dark knight"</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+              <span class="project-tag" style="background:var(--purple-light);color:var(--purple-dark)">Copywriting</span>
+              <a href="https://drive.google.com/file/d/1XRdNVygRCmGEf9pnXM_2SC5TZo85xUz2/view?usp=drive_link" target="_blank" rel="noopener" class="project-link">Ver projeto →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:var(--amber-light)">🎪</div>
+          <div class="project-body">
+            <div class="project-title">McDonald's × Festa Junina</div>
+            <div class="project-desc">
+              Branding temático para o Big Mac especial de São João — unindo a cultura fast food à tradição da festa junina brasileira de forma criativa e apetitosa.
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+              <span class="project-tag" style="background:var(--amber-light);color:var(--amber-dark)">Branding</span>
+              <a href="https://drive.google.com/file/d/1L03SMb3P6yeryAFMhJVxk4TIGzy8PFJI/view?usp=sharing" target="_blank" rel="noopener" class="project-link">Ver projeto →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:var(--teal-light)">🎬</div>
+          <div class="project-body">
+            <div class="project-title">Publicidade FAM — Matrix</div>
+            <div class="project-desc">
+              Vídeo publicitário ao estilo Matrix para promover o curso de Publicidade e Propaganda da FAM. Uma produção cinematográfica que ressignifica a escolha profissional.
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+              <span class="project-tag" style="background:var(--teal-light);color:var(--teal-dark)">Produção</span>
+              <a href="https://drive.google.com/file/d/1-sgS1-K0J1P8j6Zy797kAz-X-OF0hMv-/view?usp=sharing" target="_blank" rel="noopener" class="project-link">Ver projeto →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="container">
+      <div class="contact-section reveal">
+        <h2>Vamos trabalhar juntos?</h2>
+        <p>Estou disponível para projetos, freelas e oportunidades em marketing.</p>
+        <div class="contact-links">
+          <a href="mailto:rm2946ian@gmail.com" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            rm2946ian@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/ian-lael-ribeiro-de-andrade-51239a305/" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Ian Lael Ribeiro de Andrade · Publicidade & Marketing Digital</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
